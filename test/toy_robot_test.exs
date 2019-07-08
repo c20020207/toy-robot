@@ -93,7 +93,11 @@ defmodule ToyRobotTest do
     assert report() === %{x: 5, y: 5, direction: "NORTH"}
     place(5, 5, "EAST")
     move()
-    assert report() === %{x: 5, y: 5, direction: "EAST"}
+    left()
+    move()
+    left()
+    move()
+    assert report() === %{x: 4, y: 5, direction: "WEST"}
   end
 
   test "place_validation" do

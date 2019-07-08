@@ -30,11 +30,17 @@ defmodule ToyRobot.Robot do
   end
 
   def report() do
-    %{x: get_placement.x, y: get_placement.y, direction: get_placement.direction}
+    with placement when placement !== %Placement{x: nil, y: nil, direction: nil} <- get_placement()
+    do
+      %{x: get_placement.x, y: get_placement.y, direction: get_placement.direction}
+    else
+      _ -> "Please place your robot first!"
+    end
   end
 
   def update_direction(cal) do
-    with index when index < 4 <- Enum.find_index(@directions, &(&1 === get_placement.direction)) + cal,
+    with placement when placement !== %Placement{x: nil, y: nil, direction: nil} <- get_placement(),
+      index when index < 4 <- Enum.find_index(@directions, &(&1 === placement.direction)) + cal,
       new_direction <- Enum.at(@directions, index)
     do
       update_placement(:direction, new_direction)
