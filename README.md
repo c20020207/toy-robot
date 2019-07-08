@@ -15,10 +15,13 @@
     REPORT
 
 ## How to Run
-iex -S mix
 
-iex -> place(1, 2, "NORTH")
-iex -> move()
-iex -> left()
-iex -> right()
-iex -> report()
+    iex -S mix
+
+    # examples
+
+    iex> place 0, 0, "SOUTH"
+    iex> move
+    iex> left
+    iex> move
+    iex> report
