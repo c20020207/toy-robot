@@ -20,12 +20,24 @@ defmodule ToyRobotTest do
     place(1, 1, "NORTH")
     left()
     assert report() === %{x: 1, y: 1, direction: "WEST"}
+    left()
+    assert report() === %{x: 1, y: 1, direction: "SOUTH"}
+    left()
+    assert report() === %{x: 1, y: 1, direction: "EAST"}
+    left()
+    assert report() === %{x: 1, y: 1, direction: "NORTH"}
   end
 
   test "right" do
     place(1, 1, "NORTH")
     right()
     assert report() === %{x: 1, y: 1, direction: "EAST"}
+    right()
+    assert report() === %{x: 1, y: 1, direction: "SOUTH"}
+    right()
+    assert report() === %{x: 1, y: 1, direction: "WEST"}
+    right()
+    assert report() === %{x: 1, y: 1, direction: "NORTH"}
   end
 
   test "move" do
@@ -101,6 +113,7 @@ defmodule ToyRobotTest do
   end
 
   test "place_validation" do
+    assert report() === "Please place your robot first!"
     move()
     left()
     assert report() === "Please place your robot first!"
@@ -113,6 +126,4 @@ defmodule ToyRobotTest do
     place(1, 1, "NORTH123123")
     assert report() === "Please place your robot first!"
   end
-
-
 end
