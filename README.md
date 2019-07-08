@@ -1,21 +1,24 @@
 # ToyRobot
 
-**TODO: Add description**
+- The application is a simulation of a toy robot moving on a square tabletop,
+  of dimensions 5 units x 5 units.
+- There are no other obstructions on the table surface.
+- The robot is free to roam around the surface of the table, but must be
+  prevented from falling to destruction. Any movement that would result in the
+  robot falling from the table must be prevented, however further valid
+  movement commands must still be allowed.
+- Things you can do with this robot
+    PLACE X,Y,F
+    MOVE
+    LEFT
+    RIGHT
+    REPORT
 
-## Installation
+## How to Run
+iex -S mix
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `toy_robot` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:toy_robot, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/toy_robot](https://hexdocs.pm/toy_robot).
-
+iex -> place(1, 2, "NORTH")
+iex -> move()
+iex -> left()
+iex -> right()
+iex -> report()
