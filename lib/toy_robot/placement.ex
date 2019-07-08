@@ -6,11 +6,11 @@ defmodule ToyRobot.Placement do
   Update by key value
   """
   def update_placement(key, value) do
-    Map.put(get_placement, key, value) |> update_placement
+    Map.put(get_placement(), key, value) |> update_placement
   end
   def update_placement(new_placement) do
     if (is_valid_placement?(new_placement)) do
-      Agent.update(:placement, fn placement -> new_placement end)
+      Agent.update(:placement, fn _placement -> new_placement end)
     else
       {:error, "Can not update placement"}
     end

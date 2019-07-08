@@ -12,11 +12,12 @@ defmodule ToyRobot.Robot do
   end
 
   def move() do
-    case get_placement.direction do
-      "NORTH" -> update_placement(:y, get_placement.y + 1)
-      "EAST"  -> update_placement(:x, get_placement.x + 1)
-      "SOUTH" -> update_placement(:y, get_placement.y - 1)
-      "WEST"  -> update_placement(:x, get_placement.x - 1)
+    placement = get_placement()
+    case placement.direction do
+      "NORTH" -> update_placement(:y, placement.y + 1)
+      "EAST"  -> update_placement(:x, placement.x + 1)
+      "SOUTH" -> update_placement(:y, placement.y - 1)
+      "WEST"  -> update_placement(:x, placement.x - 1)
       _ -> nil
     end
   end
@@ -32,7 +33,7 @@ defmodule ToyRobot.Robot do
   def report() do
     with placement when placement !== %Placement{x: nil, y: nil, direction: nil} <- get_placement()
     do
-      %{x: get_placement.x, y: get_placement.y, direction: get_placement.direction}
+      %{x: placement.x, y: placement.y, direction: placement.direction}
     else
       _ -> "Please place your robot first!"
     end
